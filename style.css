@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+}
+
+#affirmation-container {
+    text-align: center;
+    font-size: 2em;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+#affirmation.fade-in {
+    opacity: 1;
+}
