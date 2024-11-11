@@ -4,14 +4,17 @@ const affirmationElement = document.getElementById('affirmation');
 
 function fetchAffirmations() {
     fetch('https://type.fit/api/quotes')
-        .then(response => response.json())
+        .then(response => {
+            console.log("Fetching data...");
+            return response.json();
+        })
         .then(data => {
-            affirmations = data.map(item => item.text); // Extract text from each quote
-            showAffirmation(); // Show initial affirmation once data is loaded
+            console.log("Data received:", data); // Log the data to ensure it's received
+            affirmations = data.map(item => item.text);
+            showAffirmation();
         })
         .catch(error => {
             console.error('Error fetching affirmations:', error);
-            // Fallback to default affirmations if there's an error
             affirmations = [
                 "You are capable of amazing things.",
                 "Every day is a new beginning.",
@@ -20,6 +23,9 @@ function fetchAffirmations() {
                 "You are stronger than you think."
             ];
             showAffirmation();
+        });
+}
+
         });
 }
 
