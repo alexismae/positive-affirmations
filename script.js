@@ -12,7 +12,7 @@ function fetchAffirmations() {
     .catch(error => console.error('Error fetching affirmations:', error));
 ;
             showAffirmation();
-        });
+        };
 }
 
         });
