@@ -3,7 +3,7 @@ let affirmations = [];
 const affirmationElement = document.getElementById('affirmation');
 
 function fetchAffirmations() {
-    fetch('https://type.fit/api/quotes')
+    fetch('https://cors-anywhere.herokuapp.com/https://type.fit/api/quotes')
         .then(response => {
             console.log("Fetching data...");
             return response.json();
