@@ -3,25 +3,14 @@ let affirmations = [];
 const affirmationElement = document.getElementById('affirmation');
 
 function fetchAffirmations() {
-    fetch('https://cors-anywhere.herokuapp.com/https://type.fit/api/quotes')
-        .then(response => {
-            console.log("Fetching data...");
-            return response.json();
-        })
-        .then(data => {
-            console.log("Data received:", data); // Log the data to ensure it's received
-            affirmations = data.map(item => item.text);
-            showAffirmation();
-        })
-        .catch(error => {
-            console.error('Error fetching affirmations:', error);
-            affirmations = [
-                "You are capable of amazing things.",
-                "Every day is a new beginning.",
-                "Believe in yourself and all that you are.",
-                "Positivity is a choice you make.",
-                "You are stronger than you think."
-            ];
+    fetch('https://zenquotes.io/api/random')
+    .then(response => response.json())
+    .then(data => {
+        affirmations = data.map(item => item.q); // Use 'q' for Zen Quotes
+        showAffirmation();
+    })
+    .catch(error => console.error('Error fetching affirmations:', error));
+;
             showAffirmation();
         });
 }
