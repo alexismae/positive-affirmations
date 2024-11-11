@@ -3,10 +3,10 @@ let affirmations = [];
 const affirmationElement = document.getElementById('affirmation');
 
 function fetchAffirmations() {
-    fetch('https://type.fit/api/quotes')
+    fetch('https://zenquotes.io/api/random')
         .then(response => response.json())
         .then(data => {
-            affirmations = data.map(item => item.text); // Extract text from each quote
+            affirmations = data.map(item => item.q); // 'q' is the key for the quote text
             showAffirmation(); // Show initial affirmation once data is loaded
         })
         .catch(error => {
@@ -22,6 +22,7 @@ function fetchAffirmations() {
             showAffirmation();
         });
 }
+
 
 function showAffirmation() {
     if (affirmations.length > 0) {
