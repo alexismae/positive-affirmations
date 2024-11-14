@@ -3,15 +3,18 @@ let affirmations = [];
 const affirmationElement = document.getElementById('affirmation');
 
 function fetchAffirmations() {
-    fetch('https://zenquotes.io/api/random')
-        .then(response => response.json())
+    const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTZO0oljRpa9rXw8KZGmv8KbDYEsi_6f8jIfiMzk7aCWS0fPxEPmiDSc3bONONYWFypdi204mmxNgdo/pubhtml'; // Replace with your published URL
+    
+    fetch(sheetURL)
+        .then(response => response.text()) // Read the CSV as plain text
         .then(data => {
-            affirmations = data.map(item => item.q); // 'q' is the key for the quote text
-            showAffirmation(); // Show initial affirmation once data is loaded
+            // Parse the CSV data into an array of affirmations
+            affirmations = data.split('\n').map(row => row.trim());
+            showAffirmation(); // Show the first affirmation
         })
         .catch(error => {
             console.error('Error fetching affirmations:', error);
-            // Fallback to default affirmations if there's an error
+            // Fallback to default affirmations in case of an error
             affirmations = [
                 "You are capable of amazing things.",
                 "Every day is a new beginning.",
@@ -22,6 +25,7 @@ function fetchAffirmations() {
             showAffirmation();
         });
 }
+
 
 
 function showAffirmation() {
