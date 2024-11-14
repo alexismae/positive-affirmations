@@ -3,7 +3,7 @@ let affirmations = [];
 const affirmationElement = document.getElementById('affirmation');
 
 function fetchAffirmations() {
-    const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTZO0oljRpa9rXw8KZGmv8KbDYEsi_6f8jIfiMzk7aCWS0fPxEPmiDSc3bONONYWFypdi204mmxNgdo/pubhtml'; // Replace with your published URL
+    const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTZO0oljRpa9rXw8KZGmv8KbDYEsi_6f8jIfiMzk7aCWS0fPxEPmiDSc3bONONYWFypdi204mmxNgdo/pub?gid=0&single=true&output=csv'; // Replace with your published URL
     
     fetch(sheetURL)
         .then(response => response.text()) // Read the CSV as plain text
